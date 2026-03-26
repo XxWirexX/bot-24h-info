@@ -1,0 +1,20 @@
+{
+  "color": "#ff6144",
+  "tryhard": {
+    "title": "🔥 {name} 🔥",
+    "description": "**24h Info Montpellier 2026**",
+    "membersTitle": "Membres de l'équipe",
+    "noMembers": "*Aucun membre pour le moment*",
+    "footerText": "{count}/{max} membres"
+  },
+  "fun": {
+    "title": "🎉 {name} 🎉",
+    "description": "**24h Info Montpellier 2026**",
+    "membersTitle": "Membres de l'équipe",
+    "noMembers": "*Aucun membre pour le moment*",
+    "footerText": "{count}/{max} membres"
+  },
+  "liste": {
+    "title": "📋 Équipes 24h Info Montpellier 2026"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "bot-24h-info",
+  "version": "1.0.0",
+  "description": "Bot Discord pour gérer les équipes des 24h Info de Montpellier",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
+  },
+  "keywords": ["discord", "bot", "24h-info"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
