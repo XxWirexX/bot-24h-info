@@ -9,6 +9,8 @@ const GUILD_ID = process.env.GUILD_ID;
 const OWNER_ID = process.env.OWNER_ID;
 const CHANNEL_TRYHARD_ID = process.env.CHANNEL_TRYHARD_ID;
 const CHANNEL_FUN_ID = process.env.CHANNEL_FUN_ID;
+const ROLE_TRYHARD_ID = process.env.ROLE_TRYHARD_ID;
+const ROLE_FUN_ID = process.env.ROLE_FUN_ID;
 
 const DATA_FILE = './teams.json';
 const EMBEDS_FILE = './embeds.json';
@@ -245,6 +247,16 @@ client.on('interactionCreate', async (interaction) => {
             // Récupérer le membre du serveur pour avoir le displayName
             const guildMember = await interaction.guild.members.fetch(membre.id);
 
+            // Ajouter le rôle
+            const roleId = teamType === 'tryhard' ? ROLE_TRYHARD_ID : ROLE_FUN_ID;
+            if (roleId) {
+                try {
+                    await guildMember.roles.add(roleId);
+                } catch (err) {
+                    console.error(`Erreur ajout rôle: ${err}`);
+                }
+            }
+
             data[teamType].members.push({
                 id: membre.id,
                 name: guildMember.displayName
@@ -266,6 +278,17 @@ client.on('interactionCreate', async (interaction) => {
                     content: `❌ ${membre} n'est pas dans l'équipe ${teamName}.`,
                     ephemeral: true
                 });
+            }
+
+            // Retirer le rôle
+            const roleId = teamType === 'tryhard' ? ROLE_TRYHARD_ID : ROLE_FUN_ID;
+            if (roleId) {
+                try {
+                    const guildMember = await interaction.guild.members.fetch(membre.id);
+                    await guildMember.roles.remove(roleId);
+                } catch (err) {
+                    console.error(`Erreur retrait rôle: ${err}`);
+                }
             }
 
             data[teamType].members = data[teamType].members.filter(m => m.id !== membre.id);
